@@ -52,8 +52,6 @@ evaluate.py → Trains & evaluates ML model
 
 *_landmark_norm.csv → Normalized data
 
-data_sheet/ → Raw hand gesture images
-
 🛠️ Tech Stack
 
 Python
@@ -63,8 +61,6 @@ MediaPipe Hands
 OpenCV
 
 Scikit-Learn
-
-pyautogui / os (for system control)
 
 🔥 What I Learnt
 
