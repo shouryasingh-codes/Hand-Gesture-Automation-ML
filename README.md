@@ -1,53 +1,60 @@
-Hand Gesture Controlled Automation (ML + MediaPipe + Python)
+💻 Hand Gesture Controlled Automation (Python + ML + MediaPipe)
 
-This is a simple project where I use a webcam, MediaPipe Hands,
-and a custom trained ML model to recognize hand gestures
-and control the system based on those gestures.
+This project lets me control my PC using just hand gestures in front of a webcam.
+No mouse. No keyboard. Just ✌️👊🖐️ and boom — automation.
 
-The main idea was to build something that works in real-time and
-lets me perform basic actions without touching the keyboard or mouse.
+I wanted to build something that works live and reacts instantly.
+And yes — it actually works.
 
-💡 Gestures & Actions
-
-I trained the model on 3 gestures:
-
+✋ Gestures & Actions (Real-Time)
 Gesture	Action
 ✌️ Victory	Opens Chrome
-✊ Fist	Opens ChatGPT website
-🖐️ Open Palm	Closes Chrome
+👊 Fist	Opens ChatGPT
+🖐️ Palm	Closes Chrome
 
-Each action runs only once when a new gesture appears.
-Holding the gesture does not repeat the action.
+Note: Each gesture triggers an action only once. Holding it won't spam.
 
-🧠 How the system works
+⚙️ How It Works (Under the Hood)
 
-Camera captures my hand
+Webcam captures live hand movement
 
-MediaPipe extracts 21 hand landmarks
+MediaPipe tracks 21 hand landmarks
 
-I normalized the landmarks wrt the wrist
+Coordinates are normalized (so position doesn't matter)
 
-A RandomForest model predicts the gesture
+A RandomForest ML model predicts the gesture
 
-Based on the prediction, Python triggers system commands
+Based on prediction, Python runs system-level commands (like opening Chrome)
 
-The whole pipeline runs live using OpenCV.
+Everything runs live using OpenCV —
+Real-time input → real-time action.
 
-📦 Project Files
+🧠 What I Actually Faced
 
-realtime.py → Final real-time gesture automation code
+✌️ gesture was failing unless my hand was super close to camera
+→ Fixed using wrist-based normalization
 
-guestre_model.pkl → Trained ML model
+CSV files had header/index issues
+→ Took some solid debugging to clean training data
 
-extract_landmaK.py → Landmark extraction script
+Real-time loop was glitchy at first
+→ Added frame wait + model output filtering
 
-evaluate.py → Model training & evaluation
+📁 Project Files (Cleaned & Functional)
 
-*_landmark_norm.csv → Normalized landmark datasets
+realtime.py → Final live system
 
-data_sheet/ → Gesture images (raw data)
+guesture_model.pkl → Trained model
 
-🛠️ Tech Used
+extract_landmaK.py → Collects normalized landmark data
+
+evaluate.py → Trains & evaluates ML model
+
+*_landmark_norm.csv → Normalized data
+
+data_sheet/ → Raw hand gesture images
+
+🛠️ Tech Stack
 
 Python
 
@@ -57,22 +64,22 @@ OpenCV
 
 Scikit-Learn
 
-OS Automation (os / pyautogui)
+pyautogui / os (for system control)
 
-🤝 What I learnt
+🔥 What I Learnt
 
-Real-time ML model integration
+Real-time ML system building
 
-Working with MediaPipe landmarks
+Landmark normalization logic
 
-Normalizing coordinate-based data
+Using RandomForest for classification
 
-Training + evaluating simple ML models
+Practical issues in gesture control
 
-Using Python for automation
+Automating system using pure Python
 
-Most importantly: debugging real-time systems
+And yeah — debugging hell and coming out alive 💀💪
 
-Author
-
-Lucky Singh
+🙋‍♂️ Made by
+Shourya Singh
+Built from scratch, tested in pain, now running smooth 😎
